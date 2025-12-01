@@ -3,159 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioInformatics Hub</title>
+    <title>Bioinformatics: Code Meets Life</title>
     <style>
+        /* --- CSS Variables & Reset --- */
         :root {
-            --primary: #2c3e50;
-            --accent: #27ae60; /* DNA Green */
-            --light: #ecf0f1;
+            --primary-color: #0f172a; /* Dark Blue (Tech) */
+            --accent-color: #10b981;  /* Emerald Green (Bio) */
+            --text-color: #334155;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            color: #333;
         }
-        header {
-            background: var(--primary);
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-light);
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/1600x900/?dna,biology');
-            background-size: cover;
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
+
+        /* --- Layout Utilities --- */
         .container {
             max-width: 1100px;
-            margin: auto;
-            padding: 20px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* --- Header/Hero Section --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* --- About Section --- */
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* --- The IT Intersection Grid --- */
+        .grid-section {
+            background-color: var(--white);
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- Tech Stack Section --- */
+        .tech-stack {
+            text-align: center;
+        }
+        
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
             margin-top: 30px;
         }
-        .card {
-            background: var(--light);
-            padding: 20px;
-            border-left: 5px solid var(--accent);
-            border-radius: 5px;
-        }
-        .code-block {
-            background: #222;
-            color: #0f0;
-            padding: 15px;
-            font-family: monospace;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        footer {
-            background: var(--primary);
+
+        .tag {
+            background: var(--primary-color);
             color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-        button {
-            background: var(--accent);
-            color: white;
-            border: none;
             padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
-        button:hover {
-            background: #2ecc71;
+
+        .tag.bio { background: var(--accent-color); }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary-color);
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        footer a { color: var(--accent-color); text-decoration: none; }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            header p { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- HERO SECTION -->
     <header>
-        <h1>Helix & Code</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#tutorials">Tutorials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Bioinformatics</h1>
+            <p>Where <span class="highlight">Biology</span> becomes a <span class="highlight">Big Data</span> problem.</p>
+        </div>
     </header>
 
-    <section class="hero" id="home">
-        <h2>Decoding Life with Data</h2>
-        <p>Exploring Genomics, Proteomics, and Computational Biology.</p>
-        <button onclick="window.location.href='#projects'">View My Research</button>
+    <!-- INTRO SECTION -->
+    <section>
+        <div class="container">
+            <p class="intro-text">
+                Biology is no longer just about microscopes and petri dishes. Since the sequencing of the Human Genome, biology has transformed into an information science. 
+                <br><br>
+                <strong>Bioinformatics</strong> is the field where Computer Science, Statistics, and Biology converge to analyze the massive datasets generated by modern science.
+            </p>
+        </div>
     </section>
 
-    <div class="container">
-        
-        <!-- About Section -->
-        <section>
-            <h3>What is Bioinformatics?</h3>
-            <p>Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data, in particular when the data sets are large and complex. It combines biology, computer science, information engineering, mathematics and statistics to analyze and interpret biological data.</p>
-        </section>
-
-        <!-- Projects Grid -->
-        <section id="projects">
-            <h3 style="text-align:center; margin-top:50px;">Featured Projects</h3>
+    <!-- IT APPLICATIONS GRID -->
+    <section class="grid-section">
+        <div class="container">
+            <h2>How IT is Applied</h2>
             <div class="grid">
+                
+                <!-- Card 1 -->
                 <div class="card">
-                    <h4>🧬 Sequence Alignment</h4>
-                    <p>A Python implementation of the Needleman-Wunsch algorithm for global sequence alignment.</p>
+                    <h3>💻 Algorithms</h3>
+                    <p>
+                        <strong>The Problem:</strong> Aligning billions of DNA letters (A, C, T, G) to find mutations.
+                        <br>
+                        <strong>The IT Solution:</strong> Dynamic programming algorithms (like Needleman-Wunsch) and string matching techniques to process text data efficiently.
+                    </p>
                 </div>
+
+                <!-- Card 2 -->
                 <div class="card">
-                    <h4>🦠 RNA-Seq Analysis</h4>
-                    <p>Visualization of differential gene expression using R and Bioconductor.</p>
+                    <h3>🗄️ Databases & Big Data</h3>
+                    <p>
+                        <strong>The Problem:</strong> A single genome is 3GB. We have sequenced millions.
+                        <br>
+                        <strong>The IT Solution:</strong> Massive SQL and NoSQL architectures, Data Warehousing, and distributed cloud storage (AWS/GCP) to host petabytes of genomic data.
+                    </p>
                 </div>
+
+                <!-- Card 3 -->
                 <div class="card">
-                    <h4>💊 Protein Docking</h4>
-                    <p>Molecular dynamics simulations predicting drug binding affinity.</p>
+                    <h3>🤖 AI & Machine Learning</h3>
+                    <p>
+                        <strong>The Problem:</strong> Predicting how a protein folds based on its sequence.
+                        <br>
+                        <strong>The IT Solution:</strong> Deep Learning models (like Google's AlphaFold) trained on 3D structural data to solve 50-year-old biological mysteries.
+                    </p>
                 </div>
+
+                <!-- Card 4 -->
+                <div class="card">
+                    <h3>🐧 DevOps & Scripting</h3>
+                    <p>
+                        <strong>The Problem:</strong> Reproducible research pipelines.
+                        <br>
+                        <strong>The IT Solution:</strong> Using Docker containers, Conda environments, and Nextflow pipelines to ensure analysis runs the same way on every server.
+                    </p>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Tutorial Section with Code -->
-        <section id="tutorials" style="margin-top: 50px;">
-            <h3>Tutorial: GC Content Calculation</h3>
-            <p>Here is a simple Python function to calculate the GC content of a DNA sequence:</p>
-            <div class="code-block">
-def count_gc(sequence):
-    """Calculates GC content percentage"""
-    g_count = sequence.count('G')
-    c_count = sequence.count('C')
-    total = len(sequence)
-    return ((g_count + c_count) / total) * 100
-
-dna = "ATGCGGACCT"
-print(f"GC Content: {count_gc(dna)}%")
+    <!-- TECH STACK SECTION -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2>The Tech Stack</h2>
+            <p>If you have an IT background, you already know the tools of the trade.</p>
+            
+            <div class="tag-container">
+                <span class="tag">Python</span>
+                <span class="tag">Linux / Bash</span>
+                <span class="tag">R Language</span>
+                <span class="tag">SQL</span>
+                <span class="tag">AWS / Cloud</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Git</span>
+                <span class="tag bio">Biopython</span>
+                <span class="tag bio">Genomics</span>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
-
-    <footer id="contact">
-        <p>&copy; 2023 Bioinformatics Hub. Built for Science.</p>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>Hosted on GitHub Pages | Built with HTML & CSS</p>
+            <p>Ready to contribute? <a href="https://github.com/">Create your own repo.</a></p>
+        </div>
     </footer>
 
 </body>
