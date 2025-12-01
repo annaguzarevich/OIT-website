@@ -1,18 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioInformatics Hub</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
-        h1 { color: #2c3e50; }
-        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: inline-block; }
+        :root {
+            --primary: #2c3e50;
+            --accent: #27ae60; /* DNA Green */
+            --light: #ecf0f1;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/1600x900/?dna,biology');
+            background-size: cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .card {
+            background: var(--light);
+            padding: 20px;
+            border-left: 5px solid var(--accent);
+            border-radius: 5px;
+        }
+        .code-block {
+            background: #222;
+            color: #0f0;
+            padding: 15px;
+            font-family: monospace;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: #2ecc71;
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>It Works! 🚀</h1>
-        <p>This website is hosted for free on GitHub Pages.</p>
-        <p>I can update this text by editing my <code>index.html</code> file.</p>
+
+    <header>
+        <h1>Helix & Code</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#tutorials">Tutorials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Decoding Life with Data</h2>
+        <p>Exploring Genomics, Proteomics, and Computational Biology.</p>
+        <button onclick="window.location.href='#projects'">View My Research</button>
+    </section>
+
+    <div class="container">
+        
+        <!-- About Section -->
+        <section>
+            <h3>What is Bioinformatics?</h3>
+            <p>Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data, in particular when the data sets are large and complex. It combines biology, computer science, information engineering, mathematics and statistics to analyze and interpret biological data.</p>
+        </section>
+
+        <!-- Projects Grid -->
+        <section id="projects">
+            <h3 style="text-align:center; margin-top:50px;">Featured Projects</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🧬 Sequence Alignment</h4>
+                    <p>A Python implementation of the Needleman-Wunsch algorithm for global sequence alignment.</p>
+                </div>
+                <div class="card">
+                    <h4>🦠 RNA-Seq Analysis</h4>
+                    <p>Visualization of differential gene expression using R and Bioconductor.</p>
+                </div>
+                <div class="card">
+                    <h4>💊 Protein Docking</h4>
+                    <p>Molecular dynamics simulations predicting drug binding affinity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorial Section with Code -->
+        <section id="tutorials" style="margin-top: 50px;">
+            <h3>Tutorial: GC Content Calculation</h3>
+            <p>Here is a simple Python function to calculate the GC content of a DNA sequence:</p>
+            <div class="code-block">
+def count_gc(sequence):
+    """Calculates GC content percentage"""
+    g_count = sequence.count('G')
+    c_count = sequence.count('C')
+    total = len(sequence)
+    return ((g_count + c_count) / total) * 100
+
+dna = "ATGCGGACCT"
+print(f"GC Content: {count_gc(dna)}%")
+            </div>
+        </section>
+
     </div>
+
+    <footer id="contact">
+        <p>&copy; 2023 Bioinformatics Hub. Built for Science.</p>
+    </footer>
+
 </body>
 </html>
